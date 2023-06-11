@@ -1,0 +1,3030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on darwin)" generated="20230612 00:17:25.257" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="/Users/qa/my-rsb-robot/tasks.robot">
+<test id="s1-t1" name="Insert the sales data for the week and export it as a PDF" line="8">
+<kw name="Open the intranet website">
+<kw name="Open Browser" library="RPA.Browser.Playwright">
+<arg>https://robotsparebinindustries.com/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Opens a new browser instance. Use this keyword for quick experiments or debugging sessions.</doc>
+<msg timestamp="20230612 00:17:28.401" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+<msg timestamp="20230612 00:17:28.406" level="INFO">{"browser": "chromium", "headless": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "deprecated_pos_args": [], "tracesDir": "/Users/qa/my-rsb-robot/output/browser/traces/84b2fb08-7c7e-48fe-a6c7-9e954da550dc"}</msg>
+<msg timestamp="20230612 00:17:29.213" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"deprecated_pos_args":[],"tracesDir":"/Users/qa/my-rsb-robot/output/browser/traces/84b2fb08-7c7e-48fe-a6c7-9e954da550dc"}</msg>
+<msg timestamp="20230612 00:17:29.214" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": true,
+  "forcedColors": "none",
+  "hideRfBrowser": false,
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "viewport": {
+    "height": 720,
+    "width": 1280
+  },
+  "deprecated_pos_args": []
+}</msg>
+<msg timestamp="20230612 00:17:29.235" level="INFO">Successfully created context. </msg>
+<msg timestamp="20230612 00:17:29.236" level="INFO">{'acceptDownloads': True, 'bypassCSP': True, 'forcedColors': 'none', 'hideRfBrowser': False, 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'viewport': {'height': 720, 'width': 1280}, 'deprecated_pos_args': []}</msg>
+<msg timestamp="20230612 00:17:30.407" level="INFO">Successfully initialized new page object and opened url: https://robotsparebinindustries.com/</msg>
+<status status="PASS" starttime="20230612 00:17:28.401" endtime="20230612 00:17:30.408"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:28.400" endtime="20230612 00:17:30.408"/>
+</kw>
+<kw name="Log in">
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=username</arg>
+<arg>maria</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:30.412" level="INFO">Fills the text 'maria' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:30.411" endtime="20230612 00:17:30.499"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=password</arg>
+<arg>thoushallnotpass</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:30.500" level="INFO">Fills the text 'thoushallnotpass' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:30.500" endtime="20230612 00:17:30.601"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>css=button.btn-primary</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:30.601" endtime="20230612 00:17:30.742"/>
+</kw>
+<kw name="Wait For Elements State" library="RPA.Browser.Playwright">
+<arg>id=sales-form</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<msg timestamp="20230612 00:17:33.348" level="INFO">Waited for Element with selector id=sales-form at state visible</msg>
+<status status="PASS" starttime="20230612 00:17:30.742" endtime="20230612 00:17:33.349"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:30.409" endtime="20230612 00:17:33.350"/>
+</kw>
+<kw name="Download the Excel file">
+<kw name="Download" library="RPA.HTTP">
+<arg>https://robotsparebinindustries.com/SalesData.xlsx</arg>
+<arg>overwrite=True</arg>
+<doc>An alias for the ``HTTP Get`` keyword.</doc>
+<msg timestamp="20230612 00:17:33.354" level="INFO">Creating a new HTTP session</msg>
+<msg timestamp="20230612 00:17:33.354" level="INFO">Creating Session using : alias=rpasession_alias.httpsrobotsparebinindustries.com, url=https://robotsparebinindustries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230612 00:17:33.353" endtime="20230612 00:17:33.561"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:33.351" endtime="20230612 00:17:33.562"/>
+</kw>
+<kw name="Fill the form using the data from the Excel file">
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<arg>SalesData.xlsx</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20230612 00:17:33.588" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x10b59ebe0&gt;</msg>
+<status status="PASS" starttime="20230612 00:17:33.563" endtime="20230612 00:17:33.588"/>
+</kw>
+<kw name="Read Worksheet As Table" library="RPA.Excel.Files">
+<var>${sales_reps}</var>
+<arg>header=True</arg>
+<doc>Read the contents of a worksheet into a Table container. Allows
+sorting/filtering/manipulating using the ``RPA.Tables`` library.</doc>
+<msg timestamp="20230612 00:17:33.590" level="INFO">Created table: Table(columns=['First Name', 'Last Name', 'Sales', 'Sales Target'], rows=50)</msg>
+<msg timestamp="20230612 00:17:33.590" level="INFO">${sales_reps} = Table(columns=['First Name', 'Last Name', 'Sales', 'Sales Target'], rows=50)</msg>
+<status status="PASS" starttime="20230612 00:17:33.589" endtime="20230612 00:17:33.591"/>
+</kw>
+<kw name="Close Workbook" library="RPA.Excel.Files">
+<doc>Close the active workbook.</doc>
+<msg timestamp="20230612 00:17:33.591" level="INFO">Closing workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x10b59ebe0&gt;</msg>
+<status status="PASS" starttime="20230612 00:17:33.591" endtime="20230612 00:17:33.592"/>
+</kw>
+<for flavor="IN">
+<var>${sales_rep}</var>
+<value>@{sales_reps}</value>
+<iter>
+<var name="${sales_rep}">{'First Name': 'David', 'Last Name': 'Heazel', 'Sales': 80193, 'Sales Target': 30000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:33.594" level="INFO">${string} = 30000</msg>
+<status status="PASS" starttime="20230612 00:17:33.594" endtime="20230612 00:17:33.595"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:33.596" level="INFO">Fills the text 'David' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:33.595" endtime="20230612 00:17:33.621"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:33.623" level="INFO">Fills the text 'Heazel' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:33.622" endtime="20230612 00:17:33.648"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:33.649" endtime="20230612 00:17:33.708"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:33.709" level="INFO">Fills the text '80193' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:33.709" endtime="20230612 00:17:33.729"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:33.730" endtime="20230612 00:17:33.848"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:33.593" endtime="20230612 00:17:33.849"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:33.593" endtime="20230612 00:17:33.850"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Conte', 'Last Name': 'Mascetti', 'Sales': 141182, 'Sales Target': 35000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:33.853" level="INFO">${string} = 35000</msg>
+<status status="PASS" starttime="20230612 00:17:33.852" endtime="20230612 00:17:33.853"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:33.855" level="INFO">Fills the text 'Conte' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:33.854" endtime="20230612 00:17:33.905"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:33.907" level="INFO">Fills the text 'Mascetti' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:33.906" endtime="20230612 00:17:33.926"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:33.926" endtime="20230612 00:17:33.961"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:33.962" level="INFO">Fills the text '141182' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:33.962" endtime="20230612 00:17:33.980"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:33.981" endtime="20230612 00:17:34.084"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:33.851" endtime="20230612 00:17:34.085"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:33.850" endtime="20230612 00:17:34.086"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Dallon', 'Last Name': 'Seals', 'Sales': 61456, 'Sales Target': 15000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:34.088" level="INFO">${string} = 15000</msg>
+<status status="PASS" starttime="20230612 00:17:34.088" endtime="20230612 00:17:34.088"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.089" level="INFO">Fills the text 'Dallon' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.089" endtime="20230612 00:17:34.136"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.138" level="INFO">Fills the text 'Seals' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.137" endtime="20230612 00:17:34.219"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:34.219" endtime="20230612 00:17:34.252"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.253" level="INFO">Fills the text '61456' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.253" endtime="20230612 00:17:34.272"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:34.272" endtime="20230612 00:17:34.356"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:34.087" endtime="20230612 00:17:34.357"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:34.087" endtime="20230612 00:17:34.357"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Jocelyn', 'Last Name': 'Thomsson', 'Sales': 99354, 'Sales Target': 95000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:34.360" level="INFO">${string} = 95000</msg>
+<status status="PASS" starttime="20230612 00:17:34.359" endtime="20230612 00:17:34.360"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.361" level="INFO">Fills the text 'Jocelyn' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.360" endtime="20230612 00:17:34.407"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.409" level="INFO">Fills the text 'Thomsson' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.408" endtime="20230612 00:17:34.428"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:34.428" endtime="20230612 00:17:34.468"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.469" level="INFO">Fills the text '99354' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.468" endtime="20230612 00:17:34.491"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:34.492" endtime="20230612 00:17:34.590"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:34.358" endtime="20230612 00:17:34.591"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:34.358" endtime="20230612 00:17:34.591"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Yoko', 'Last Name': 'Flecknell', 'Sales': 139701, 'Sales Target': 50000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:34.593" level="INFO">${string} = 50000</msg>
+<status status="PASS" starttime="20230612 00:17:34.592" endtime="20230612 00:17:34.593"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.594" level="INFO">Fills the text 'Yoko' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.593" endtime="20230612 00:17:34.640"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.641" level="INFO">Fills the text 'Flecknell' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.640" endtime="20230612 00:17:34.658"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:34.658" endtime="20230612 00:17:34.689"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.690" level="INFO">Fills the text '139701' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.689" endtime="20230612 00:17:34.708"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:34.708" endtime="20230612 00:17:34.795"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:34.592" endtime="20230612 00:17:34.795"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:34.591" endtime="20230612 00:17:34.795"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Ninnette', 'Last Name': 'Heinssen', 'Sales': 63808, 'Sales Target': 25000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:34.798" level="INFO">${string} = 25000</msg>
+<status status="PASS" starttime="20230612 00:17:34.797" endtime="20230612 00:17:34.798"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.799" level="INFO">Fills the text 'Ninnette' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.799" endtime="20230612 00:17:34.844"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.845" level="INFO">Fills the text 'Heinssen' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.844" endtime="20230612 00:17:34.865"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:34.866" endtime="20230612 00:17:34.902"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:34.903" level="INFO">Fills the text '63808' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:34.902" endtime="20230612 00:17:34.920"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:34.921" endtime="20230612 00:17:35.008"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:34.796" endtime="20230612 00:17:35.009"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:34.796" endtime="20230612 00:17:35.009"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Ahmed', 'Last Name': 'Vasnetsov', 'Sales': 50211, 'Sales Target': 60000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:35.012" level="INFO">${string} = 60000</msg>
+<status status="PASS" starttime="20230612 00:17:35.011" endtime="20230612 00:17:35.012"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.013" level="INFO">Fills the text 'Ahmed' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.012" endtime="20230612 00:17:35.081"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.082" level="INFO">Fills the text 'Vasnetsov' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.081" endtime="20230612 00:17:35.097"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:35.097" endtime="20230612 00:17:35.133"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.135" level="INFO">Fills the text '50211' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.134" endtime="20230612 00:17:35.152"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:35.153" endtime="20230612 00:17:35.245"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.010" endtime="20230612 00:17:35.245"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.010" endtime="20230612 00:17:35.245"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Pearline', 'Last Name': 'Fenton', 'Sales': 78556, 'Sales Target': 35000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:35.248" level="INFO">${string} = 35000</msg>
+<status status="PASS" starttime="20230612 00:17:35.247" endtime="20230612 00:17:35.248"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.249" level="INFO">Fills the text 'Pearline' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.248" endtime="20230612 00:17:35.296"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.297" level="INFO">Fills the text 'Fenton' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.296" endtime="20230612 00:17:35.314"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:35.314" endtime="20230612 00:17:35.344"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.345" level="INFO">Fills the text '78556' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.345" endtime="20230612 00:17:35.430"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:35.431" endtime="20230612 00:17:35.526"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.246" endtime="20230612 00:17:35.527"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.246" endtime="20230612 00:17:35.527"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Lelah', 'Last Name': 'Yewdale', 'Sales': 122695, 'Sales Target': 100000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:35.530" level="INFO">${string} = 100000</msg>
+<status status="PASS" starttime="20230612 00:17:35.529" endtime="20230612 00:17:35.530"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.531" level="INFO">Fills the text 'Lelah' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.530" endtime="20230612 00:17:35.584"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.586" level="INFO">Fills the text 'Yewdale' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.585" endtime="20230612 00:17:35.602"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:35.602" endtime="20230612 00:17:35.632"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.633" level="INFO">Fills the text '122695' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.633" endtime="20230612 00:17:35.649"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:35.650" endtime="20230612 00:17:35.744"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.529" endtime="20230612 00:17:35.745"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.528" endtime="20230612 00:17:35.745"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Belinda', 'Last Name': 'Blumenthal', 'Sales': 115410, 'Sales Target': 70000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:35.748" level="INFO">${string} = 70000</msg>
+<status status="PASS" starttime="20230612 00:17:35.747" endtime="20230612 00:17:35.748"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.749" level="INFO">Fills the text 'Belinda' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.748" endtime="20230612 00:17:35.794"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.796" level="INFO">Fills the text 'Blumenthal' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.795" endtime="20230612 00:17:35.814"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:35.814" endtime="20230612 00:17:35.849"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.850" level="INFO">Fills the text '115410' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.849" endtime="20230612 00:17:35.868"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:35.868" endtime="20230612 00:17:35.961"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.746" endtime="20230612 00:17:35.961"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.746" endtime="20230612 00:17:35.961"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Antoni', 'Last Name': 'Degoe', 'Sales': 106991, 'Sales Target': 75000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:35.964" level="INFO">${string} = 75000</msg>
+<status status="PASS" starttime="20230612 00:17:35.964" endtime="20230612 00:17:35.964"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:35.965" level="INFO">Fills the text 'Antoni' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:35.965" endtime="20230612 00:17:36.012"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.013" level="INFO">Fills the text 'Degoe' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.013" endtime="20230612 00:17:36.030"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.030" endtime="20230612 00:17:36.061"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.062" level="INFO">Fills the text '106991' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.061" endtime="20230612 00:17:36.078"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.079" endtime="20230612 00:17:36.179"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.962" endtime="20230612 00:17:36.179"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:35.962" endtime="20230612 00:17:36.180"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Donnamarie', 'Last Name': 'Watts', 'Sales': 25924, 'Sales Target': 85000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:36.182" level="INFO">${string} = 85000</msg>
+<status status="PASS" starttime="20230612 00:17:36.182" endtime="20230612 00:17:36.183"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.183" level="INFO">Fills the text 'Donnamarie' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.183" endtime="20230612 00:17:36.232"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.233" level="INFO">Fills the text 'Watts' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.232" endtime="20230612 00:17:36.249"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.250" endtime="20230612 00:17:36.282"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.283" level="INFO">Fills the text '25924' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.282" endtime="20230612 00:17:36.299"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.299" endtime="20230612 00:17:36.397"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:36.181" endtime="20230612 00:17:36.398"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:36.180" endtime="20230612 00:17:36.398"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Anabella', 'Last Name': 'Blindermann', 'Sales': 43564, 'Sales Target': 85000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:36.400" level="INFO">${string} = 85000</msg>
+<status status="PASS" starttime="20230612 00:17:36.400" endtime="20230612 00:17:36.400"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.401" level="INFO">Fills the text 'Anabella' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.401" endtime="20230612 00:17:36.461"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.462" level="INFO">Fills the text 'Blindermann' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.462" endtime="20230612 00:17:36.479"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.479" endtime="20230612 00:17:36.537"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.538" level="INFO">Fills the text '43564' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.537" endtime="20230612 00:17:36.558"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.559" endtime="20230612 00:17:36.657"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:36.399" endtime="20230612 00:17:36.658"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:36.398" endtime="20230612 00:17:36.658"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Fred', 'Last Name': 'Mengoni', 'Sales': 131725, 'Sales Target': 5000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:36.661" level="INFO">${string} = 5000</msg>
+<status status="PASS" starttime="20230612 00:17:36.660" endtime="20230612 00:17:36.661"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.662" level="INFO">Fills the text 'Fred' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.661" endtime="20230612 00:17:36.716"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.718" level="INFO">Fills the text 'Mengoni' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.717" endtime="20230612 00:17:36.734"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.734" endtime="20230612 00:17:36.765"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.766" level="INFO">Fills the text '131725' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.765" endtime="20230612 00:17:36.784"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.784" endtime="20230612 00:17:36.874"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:36.659" endtime="20230612 00:17:36.875"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:36.659" endtime="20230612 00:17:36.875"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Nathanil', 'Last Name': 'Bragg', 'Sales': 100336, 'Sales Target': 35000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:36.877" level="INFO">${string} = 35000</msg>
+<status status="PASS" starttime="20230612 00:17:36.876" endtime="20230612 00:17:36.877"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.878" level="INFO">Fills the text 'Nathanil' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.877" endtime="20230612 00:17:36.923"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.924" level="INFO">Fills the text 'Bragg' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.923" endtime="20230612 00:17:36.942"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.942" endtime="20230612 00:17:36.973"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:36.974" level="INFO">Fills the text '100336' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:36.973" endtime="20230612 00:17:36.991"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:36.991" endtime="20230612 00:17:37.088"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:36.875" endtime="20230612 00:17:37.089"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:36.875" endtime="20230612 00:17:37.089"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Casar', 'Last Name': 'Kubek', 'Sales': 143750, 'Sales Target': 100000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:37.092" level="INFO">${string} = 100000</msg>
+<status status="PASS" starttime="20230612 00:17:37.091" endtime="20230612 00:17:37.092"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.093" level="INFO">Fills the text 'Casar' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.093" endtime="20230612 00:17:37.150"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.151" level="INFO">Fills the text 'Kubek' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.150" endtime="20230612 00:17:37.169"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:37.169" endtime="20230612 00:17:37.203"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.204" level="INFO">Fills the text '143750' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.204" endtime="20230612 00:17:37.221"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:37.222" endtime="20230612 00:17:37.310"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.090" endtime="20230612 00:17:37.310"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.090" endtime="20230612 00:17:37.311"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Myrtle', 'Last Name': 'Puddle', 'Sales': 22729, 'Sales Target': 10000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:37.313" level="INFO">${string} = 10000</msg>
+<status status="PASS" starttime="20230612 00:17:37.312" endtime="20230612 00:17:37.313"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.314" level="INFO">Fills the text 'Myrtle' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.314" endtime="20230612 00:17:37.364"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.365" level="INFO">Fills the text 'Puddle' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.364" endtime="20230612 00:17:37.381"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:37.382" endtime="20230612 00:17:37.411"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.412" level="INFO">Fills the text '22729' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.411" endtime="20230612 00:17:37.427"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:37.428" endtime="20230612 00:17:37.526"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.312" endtime="20230612 00:17:37.526"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.311" endtime="20230612 00:17:37.527"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Devi', 'Last Name': 'Oag', 'Sales': 140919, 'Sales Target': 10000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:37.529" level="INFO">${string} = 10000</msg>
+<status status="PASS" starttime="20230612 00:17:37.528" endtime="20230612 00:17:37.529"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.530" level="INFO">Fills the text 'Devi' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.529" endtime="20230612 00:17:37.580"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.581" level="INFO">Fills the text 'Oag' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.581" endtime="20230612 00:17:37.600"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:37.600" endtime="20230612 00:17:37.630"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.631" level="INFO">Fills the text '140919' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.630" endtime="20230612 00:17:37.646"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:37.647" endtime="20230612 00:17:37.739"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.527" endtime="20230612 00:17:37.740"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.527" endtime="20230612 00:17:37.740"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Emyle', 'Last Name': "O'Driscole", 'Sales': 70981, 'Sales Target': 10000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:37.743" level="INFO">${string} = 10000</msg>
+<status status="PASS" starttime="20230612 00:17:37.742" endtime="20230612 00:17:37.743"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.744" level="INFO">Fills the text 'Emyle' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.743" endtime="20230612 00:17:37.789"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.791" level="INFO">Fills the text 'O'Driscole' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.790" endtime="20230612 00:17:37.849"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:37.850" endtime="20230612 00:17:37.881"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.882" level="INFO">Fills the text '70981' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.881" endtime="20230612 00:17:37.898"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:37.898" endtime="20230612 00:17:37.988"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.741" endtime="20230612 00:17:37.989"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.741" endtime="20230612 00:17:37.990"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Mickie', 'Last Name': 'Linbohm', 'Sales': 80516, 'Sales Target': 10000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:37.992" level="INFO">${string} = 10000</msg>
+<status status="PASS" starttime="20230612 00:17:37.991" endtime="20230612 00:17:37.992"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:37.993" level="INFO">Fills the text 'Mickie' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:37.992" endtime="20230612 00:17:38.048"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.050" level="INFO">Fills the text 'Linbohm' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.049" endtime="20230612 00:17:38.073"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:38.074" endtime="20230612 00:17:38.128"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.129" level="INFO">Fills the text '80516' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.129" endtime="20230612 00:17:38.150"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:38.151" endtime="20230612 00:17:38.257"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.991" endtime="20230612 00:17:38.258"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:37.990" endtime="20230612 00:17:38.258"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Isaac', 'Last Name': 'Asimov', 'Sales': 118852, 'Sales Target': 65000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:38.261" level="INFO">${string} = 65000</msg>
+<status status="PASS" starttime="20230612 00:17:38.260" endtime="20230612 00:17:38.261"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.262" level="INFO">Fills the text 'Isaac' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.261" endtime="20230612 00:17:38.309"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.311" level="INFO">Fills the text 'Asimov' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.310" endtime="20230612 00:17:38.329"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:38.330" endtime="20230612 00:17:38.362"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.363" level="INFO">Fills the text '118852' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.362" endtime="20230612 00:17:38.381"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:38.381" endtime="20230612 00:17:38.482"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:38.259" endtime="20230612 00:17:38.483"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:38.259" endtime="20230612 00:17:38.483"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Florence', 'Last Name': 'Mundow', 'Sales': 122953, 'Sales Target': 10000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:38.485" level="INFO">${string} = 10000</msg>
+<status status="PASS" starttime="20230612 00:17:38.485" endtime="20230612 00:17:38.486"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.486" level="INFO">Fills the text 'Florence' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.486" endtime="20230612 00:17:38.535"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.537" level="INFO">Fills the text 'Mundow' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.536" endtime="20230612 00:17:38.552"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:38.553" endtime="20230612 00:17:38.584"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.585" level="INFO">Fills the text '122953' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.585" endtime="20230612 00:17:38.601"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:38.601" endtime="20230612 00:17:38.691"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:38.484" endtime="20230612 00:17:38.692"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:38.484" endtime="20230612 00:17:38.692"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Mahalia', 'Last Name': 'Goodee', 'Sales': 46997, 'Sales Target': 45000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:38.695" level="INFO">${string} = 45000</msg>
+<status status="PASS" starttime="20230612 00:17:38.695" endtime="20230612 00:17:38.696"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.696" level="INFO">Fills the text 'Mahalia' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.696" endtime="20230612 00:17:38.748"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.749" level="INFO">Fills the text 'Goodee' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.749" endtime="20230612 00:17:38.766"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:38.766" endtime="20230612 00:17:38.796"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.797" level="INFO">Fills the text '46997' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.797" endtime="20230612 00:17:38.812"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:38.813" endtime="20230612 00:17:38.925"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:38.693" endtime="20230612 00:17:38.925"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:38.693" endtime="20230612 00:17:38.925"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Christy', 'Last Name': 'Iwaszkiewicz', 'Sales': 91465, 'Sales Target': 100000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:38.928" level="INFO">${string} = 100000</msg>
+<status status="PASS" starttime="20230612 00:17:38.927" endtime="20230612 00:17:38.928"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.929" level="INFO">Fills the text 'Christy' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.928" endtime="20230612 00:17:38.984"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:38.985" level="INFO">Fills the text 'Iwaszkiewicz' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:38.984" endtime="20230612 00:17:39.003"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.003" endtime="20230612 00:17:39.107"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.109" level="INFO">Fills the text '91465' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.108" endtime="20230612 00:17:39.126"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.127" endtime="20230612 00:17:39.223"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:38.926" endtime="20230612 00:17:39.224"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:38.926" endtime="20230612 00:17:39.224"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Madelyn', 'Last Name': 'Sire', 'Sales': 66825, 'Sales Target': 60000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:39.227" level="INFO">${string} = 60000</msg>
+<status status="PASS" starttime="20230612 00:17:39.226" endtime="20230612 00:17:39.227"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.228" level="INFO">Fills the text 'Madelyn' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.227" endtime="20230612 00:17:39.284"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.285" level="INFO">Fills the text 'Sire' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.284" endtime="20230612 00:17:39.303"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.303" endtime="20230612 00:17:39.335"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.337" level="INFO">Fills the text '66825' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.336" endtime="20230612 00:17:39.352"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.353" endtime="20230612 00:17:39.443"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:39.225" endtime="20230612 00:17:39.443"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:39.225" endtime="20230612 00:17:39.444"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Thurstan', 'Last Name': 'Karus', 'Sales': 131244, 'Sales Target': 50000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:39.447" level="INFO">${string} = 50000</msg>
+<status status="PASS" starttime="20230612 00:17:39.446" endtime="20230612 00:17:39.447"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.448" level="INFO">Fills the text 'Thurstan' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.448" endtime="20230612 00:17:39.503"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.504" level="INFO">Fills the text 'Karus' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.503" endtime="20230612 00:17:39.521"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.522" endtime="20230612 00:17:39.550"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.551" level="INFO">Fills the text '131244' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.551" endtime="20230612 00:17:39.567"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.567" endtime="20230612 00:17:39.664"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:39.445" endtime="20230612 00:17:39.665"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:39.444" endtime="20230612 00:17:39.665"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Bibi', 'Last Name': 'Rosita', 'Sales': 94131, 'Sales Target': 30000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:39.667" level="INFO">${string} = 30000</msg>
+<status status="PASS" starttime="20230612 00:17:39.666" endtime="20230612 00:17:39.667"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.668" level="INFO">Fills the text 'Bibi' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.667" endtime="20230612 00:17:39.729"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.731" level="INFO">Fills the text 'Rosita' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.730" endtime="20230612 00:17:39.748"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.748" endtime="20230612 00:17:39.778"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.779" level="INFO">Fills the text '94131' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.778" endtime="20230612 00:17:39.794"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.794" endtime="20230612 00:17:39.916"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:39.666" endtime="20230612 00:17:39.917"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:39.665" endtime="20230612 00:17:39.917"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Abbe', 'Last Name': 'Aldcorn', 'Sales': 97489, 'Sales Target': 60000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:39.919" level="INFO">${string} = 60000</msg>
+<status status="PASS" starttime="20230612 00:17:39.918" endtime="20230612 00:17:39.919"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.920" level="INFO">Fills the text 'Abbe' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.919" endtime="20230612 00:17:39.960"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:39.961" level="INFO">Fills the text 'Aldcorn' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:39.961" endtime="20230612 00:17:39.979"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:39.979" endtime="20230612 00:17:40.009"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.010" level="INFO">Fills the text '97489' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.010" endtime="20230612 00:17:40.026"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.027" endtime="20230612 00:17:40.120"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:39.917" endtime="20230612 00:17:40.121"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:39.917" endtime="20230612 00:17:40.121"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Ariadne', 'Last Name': 'Kiessel', 'Sales': 86637, 'Sales Target': 70000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:40.125" level="INFO">${string} = 70000</msg>
+<status status="PASS" starttime="20230612 00:17:40.124" endtime="20230612 00:17:40.125"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.126" level="INFO">Fills the text 'Ariadne' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.125" endtime="20230612 00:17:40.233"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.234" level="INFO">Fills the text 'Kiessel' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.233" endtime="20230612 00:17:40.250"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.250" endtime="20230612 00:17:40.277"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.278" level="INFO">Fills the text '86637' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.277" endtime="20230612 00:17:40.294"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.294" endtime="20230612 00:17:40.390"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:40.123" endtime="20230612 00:17:40.391"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:40.122" endtime="20230612 00:17:40.391"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Tiffany', 'Last Name': 'Emerine', 'Sales': 124313, 'Sales Target': 50000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:40.394" level="INFO">${string} = 50000</msg>
+<status status="PASS" starttime="20230612 00:17:40.393" endtime="20230612 00:17:40.394"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.395" level="INFO">Fills the text 'Tiffany' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.395" endtime="20230612 00:17:40.450"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.451" level="INFO">Fills the text 'Emerine' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.450" endtime="20230612 00:17:40.466"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.467" endtime="20230612 00:17:40.496"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.497" level="INFO">Fills the text '124313' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.496" endtime="20230612 00:17:40.512"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.513" endtime="20230612 00:17:40.607"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:40.392" endtime="20230612 00:17:40.607"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:40.392" endtime="20230612 00:17:40.608"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Jelene', 'Last Name': 'Pridden', 'Sales': 91489, 'Sales Target': 35000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:40.610" level="INFO">${string} = 35000</msg>
+<status status="PASS" starttime="20230612 00:17:40.610" endtime="20230612 00:17:40.611"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.611" level="INFO">Fills the text 'Jelene' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.611" endtime="20230612 00:17:40.668"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.671" level="INFO">Fills the text 'Pridden' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.669" endtime="20230612 00:17:40.688"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.688" endtime="20230612 00:17:40.716"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.717" level="INFO">Fills the text '91489' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.716" endtime="20230612 00:17:40.732"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.733" endtime="20230612 00:17:40.824"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:40.609" endtime="20230612 00:17:40.825"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:40.608" endtime="20230612 00:17:40.825"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Claus', 'Last Name': 'Bawcock', 'Sales': 140602, 'Sales Target': 25000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:40.828" level="INFO">${string} = 25000</msg>
+<status status="PASS" starttime="20230612 00:17:40.827" endtime="20230612 00:17:40.828"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.829" level="INFO">Fills the text 'Claus' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.828" endtime="20230612 00:17:40.883"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.884" level="INFO">Fills the text 'Bawcock' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.883" endtime="20230612 00:17:40.900"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.900" endtime="20230612 00:17:40.928"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:40.929" level="INFO">Fills the text '140602' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:40.928" endtime="20230612 00:17:40.943"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:40.944" endtime="20230612 00:17:41.039"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:40.826" endtime="20230612 00:17:41.040"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:40.825" endtime="20230612 00:17:41.041"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Ameline', 'Last Name': 'Olivello', 'Sales': 60101, 'Sales Target': 80000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:41.043" level="INFO">${string} = 80000</msg>
+<status status="PASS" starttime="20230612 00:17:41.043" endtime="20230612 00:17:41.044"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.044" level="INFO">Fills the text 'Ameline' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.044" endtime="20230612 00:17:41.105"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.107" level="INFO">Fills the text 'Olivello' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.106" endtime="20230612 00:17:41.122"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:41.123" endtime="20230612 00:17:41.151"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.152" level="INFO">Fills the text '60101' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.151" endtime="20230612 00:17:41.167"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:41.167" endtime="20230612 00:17:41.261"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:41.042" endtime="20230612 00:17:41.261"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:41.041" endtime="20230612 00:17:41.262"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Alikee', 'Last Name': 'Kohtler', 'Sales': 141102, 'Sales Target': 15000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:41.265" level="INFO">${string} = 15000</msg>
+<status status="PASS" starttime="20230612 00:17:41.264" endtime="20230612 00:17:41.265"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.266" level="INFO">Fills the text 'Alikee' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.265" endtime="20230612 00:17:41.376"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.377" level="INFO">Fills the text 'Kohtler' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.376" endtime="20230612 00:17:41.392"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:41.393" endtime="20230612 00:17:41.421"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.423" level="INFO">Fills the text '141102' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.422" endtime="20230612 00:17:41.440"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:41.440" endtime="20230612 00:17:41.552"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:41.263" endtime="20230612 00:17:41.552"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:41.262" endtime="20230612 00:17:41.553"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Cathleen', 'Last Name': 'Tinklin', 'Sales': 113898, 'Sales Target': 35000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:41.556" level="INFO">${string} = 35000</msg>
+<status status="PASS" starttime="20230612 00:17:41.555" endtime="20230612 00:17:41.556"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.557" level="INFO">Fills the text 'Cathleen' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.557" endtime="20230612 00:17:41.645"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.646" level="INFO">Fills the text 'Tinklin' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.646" endtime="20230612 00:17:41.668"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:41.669" endtime="20230612 00:17:41.709"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.710" level="INFO">Fills the text '113898' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.710" endtime="20230612 00:17:41.726"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:41.727" endtime="20230612 00:17:41.842"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:41.554" endtime="20230612 00:17:41.843"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:41.553" endtime="20230612 00:17:41.843"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Flossie', 'Last Name': 'Gurr', 'Sales': 111068, 'Sales Target': 85000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:41.845" level="INFO">${string} = 85000</msg>
+<status status="PASS" starttime="20230612 00:17:41.844" endtime="20230612 00:17:41.845"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.846" level="INFO">Fills the text 'Flossie' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.846" endtime="20230612 00:17:41.893"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.894" level="INFO">Fills the text 'Gurr' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.894" endtime="20230612 00:17:41.914"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:41.914" endtime="20230612 00:17:41.944"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:41.945" level="INFO">Fills the text '111068' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:41.944" endtime="20230612 00:17:41.960"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:41.960" endtime="20230612 00:17:42.066"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:41.844" endtime="20230612 00:17:42.067"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:41.843" endtime="20230612 00:17:42.067"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Milena', 'Last Name': 'Gudeman', 'Sales': 24287, 'Sales Target': 45000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:42.069" level="INFO">${string} = 45000</msg>
+<status status="PASS" starttime="20230612 00:17:42.068" endtime="20230612 00:17:42.069"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.070" level="INFO">Fills the text 'Milena' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.070" endtime="20230612 00:17:42.132"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.133" level="INFO">Fills the text 'Gudeman' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.132" endtime="20230612 00:17:42.151"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:42.152" endtime="20230612 00:17:42.178"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.179" level="INFO">Fills the text '24287' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.179" endtime="20230612 00:17:42.195"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:42.195" endtime="20230612 00:17:42.293"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:42.068" endtime="20230612 00:17:42.294"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:42.067" endtime="20230612 00:17:42.294"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Bliss', 'Last Name': 'Burgess', 'Sales': 138542, 'Sales Target': 35000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:42.297" level="INFO">${string} = 35000</msg>
+<status status="PASS" starttime="20230612 00:17:42.296" endtime="20230612 00:17:42.297"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.298" level="INFO">Fills the text 'Bliss' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.298" endtime="20230612 00:17:42.358"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.359" level="INFO">Fills the text 'Burgess' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.359" endtime="20230612 00:17:42.376"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:42.377" endtime="20230612 00:17:42.407"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.408" level="INFO">Fills the text '138542' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.407" endtime="20230612 00:17:42.424"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:42.424" endtime="20230612 00:17:42.512"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:42.295" endtime="20230612 00:17:42.513"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:42.295" endtime="20230612 00:17:42.513"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Donia', 'Last Name': 'Messenbird', 'Sales': 52436, 'Sales Target': 75000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:42.516" level="INFO">${string} = 75000</msg>
+<status status="PASS" starttime="20230612 00:17:42.515" endtime="20230612 00:17:42.516"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.517" level="INFO">Fills the text 'Donia' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.516" endtime="20230612 00:17:42.579"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.581" level="INFO">Fills the text 'Messenbird' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.580" endtime="20230612 00:17:42.652"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:42.653" endtime="20230612 00:17:42.687"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.688" level="INFO">Fills the text '52436' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.688" endtime="20230612 00:17:42.706"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:42.706" endtime="20230612 00:17:42.794"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:42.514" endtime="20230612 00:17:42.794"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:42.514" endtime="20230612 00:17:42.794"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Jemie', 'Last Name': 'Tunnacliffe', 'Sales': 64130, 'Sales Target': 50000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:42.797" level="INFO">${string} = 50000</msg>
+<status status="PASS" starttime="20230612 00:17:42.796" endtime="20230612 00:17:42.797"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.798" level="INFO">Fills the text 'Jemie' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.797" endtime="20230612 00:17:42.855"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.856" level="INFO">Fills the text 'Tunnacliffe' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.856" endtime="20230612 00:17:42.871"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:42.872" endtime="20230612 00:17:42.899"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:42.900" level="INFO">Fills the text '64130' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:42.899" endtime="20230612 00:17:42.915"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:42.916" endtime="20230612 00:17:43.042"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:42.795" endtime="20230612 00:17:43.043"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:42.795" endtime="20230612 00:17:43.043"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Gaylord', 'Last Name': 'Uebel', 'Sales': 27872, 'Sales Target': 90000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:43.048" level="INFO">${string} = 90000</msg>
+<status status="PASS" starttime="20230612 00:17:43.047" endtime="20230612 00:17:43.048"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.049" level="INFO">Fills the text 'Gaylord' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.048" endtime="20230612 00:17:43.093"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.094" level="INFO">Fills the text 'Uebel' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.093" endtime="20230612 00:17:43.109"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:43.110" endtime="20230612 00:17:43.136"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.138" level="INFO">Fills the text '27872' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.137" endtime="20230612 00:17:43.161"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:43.161" endtime="20230612 00:17:43.262"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.045" endtime="20230612 00:17:43.263"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.043" endtime="20230612 00:17:43.263"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Rufus', 'Last Name': 'Bewlie', 'Sales': 119258, 'Sales Target': 85000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:43.266" level="INFO">${string} = 85000</msg>
+<status status="PASS" starttime="20230612 00:17:43.265" endtime="20230612 00:17:43.266"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.267" level="INFO">Fills the text 'Rufus' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.267" endtime="20230612 00:17:43.328"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.329" level="INFO">Fills the text 'Bewlie' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.329" endtime="20230612 00:17:43.351"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:43.351" endtime="20230612 00:17:43.383"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.384" level="INFO">Fills the text '119258' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.384" endtime="20230612 00:17:43.400"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:43.400" endtime="20230612 00:17:43.489"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.264" endtime="20230612 00:17:43.490"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.264" endtime="20230612 00:17:43.491"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Jenine', 'Last Name': 'Kidby', 'Sales': 133576, 'Sales Target': 60000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:43.493" level="INFO">${string} = 60000</msg>
+<status status="PASS" starttime="20230612 00:17:43.492" endtime="20230612 00:17:43.493"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.494" level="INFO">Fills the text 'Jenine' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.493" endtime="20230612 00:17:43.555"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.557" level="INFO">Fills the text 'Kidby' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.555" endtime="20230612 00:17:43.571"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:43.572" endtime="20230612 00:17:43.601"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.602" level="INFO">Fills the text '133576' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.602" endtime="20230612 00:17:43.618"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:43.619" endtime="20230612 00:17:43.712"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.491" endtime="20230612 00:17:43.713"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.491" endtime="20230612 00:17:43.713"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Hortensia', 'Last Name': 'Leal', 'Sales': 29530, 'Sales Target': 70000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:43.716" level="INFO">${string} = 70000</msg>
+<status status="PASS" starttime="20230612 00:17:43.715" endtime="20230612 00:17:43.716"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.717" level="INFO">Fills the text 'Hortensia' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.717" endtime="20230612 00:17:43.778"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.780" level="INFO">Fills the text 'Leal' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.779" endtime="20230612 00:17:43.797"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:43.797" endtime="20230612 00:17:43.881"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:43.882" level="INFO">Fills the text '29530' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:43.881" endtime="20230612 00:17:43.897"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:43.897" endtime="20230612 00:17:43.996"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.715" endtime="20230612 00:17:43.996"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.714" endtime="20230612 00:17:43.997"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Regina', 'Last Name': 'Gurling', 'Sales': 86186, 'Sales Target': 15000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:43.999" level="INFO">${string} = 15000</msg>
+<status status="PASS" starttime="20230612 00:17:43.998" endtime="20230612 00:17:44.000"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.001" level="INFO">Fills the text 'Regina' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.000" endtime="20230612 00:17:44.063"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.064" level="INFO">Fills the text 'Gurling' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.063" endtime="20230612 00:17:44.081"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.081" endtime="20230612 00:17:44.112"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.113" level="INFO">Fills the text '86186' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.112" endtime="20230612 00:17:44.128"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.129" endtime="20230612 00:17:44.215"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.997" endtime="20230612 00:17:44.216"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:43.997" endtime="20230612 00:17:44.216"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Valenka', 'Last Name': 'Tantrum', 'Sales': 137708, 'Sales Target': 65000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:44.219" level="INFO">${string} = 65000</msg>
+<status status="PASS" starttime="20230612 00:17:44.218" endtime="20230612 00:17:44.219"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.220" level="INFO">Fills the text 'Valenka' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.219" endtime="20230612 00:17:44.280"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.281" level="INFO">Fills the text 'Tantrum' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.281" endtime="20230612 00:17:44.298"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.298" endtime="20230612 00:17:44.327"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.328" level="INFO">Fills the text '137708' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.327" endtime="20230612 00:17:44.343"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.343" endtime="20230612 00:17:44.429"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:44.217" endtime="20230612 00:17:44.430"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:44.217" endtime="20230612 00:17:44.430"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Dorie', 'Last Name': 'Batistelli', 'Sales': 42450, 'Sales Target': 95000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:44.433" level="INFO">${string} = 95000</msg>
+<status status="PASS" starttime="20230612 00:17:44.432" endtime="20230612 00:17:44.433"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.434" level="INFO">Fills the text 'Dorie' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.434" endtime="20230612 00:17:44.497"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.498" level="INFO">Fills the text 'Batistelli' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.498" endtime="20230612 00:17:44.516"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.516" endtime="20230612 00:17:44.545"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.546" level="INFO">Fills the text '42450' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.545" endtime="20230612 00:17:44.562"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.562" endtime="20230612 00:17:44.663"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:44.431" endtime="20230612 00:17:44.664"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:44.431" endtime="20230612 00:17:44.664"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Abra', 'Last Name': 'Heap', 'Sales': 5937, 'Sales Target': 100000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:44.666" level="INFO">${string} = 100000</msg>
+<status status="PASS" starttime="20230612 00:17:44.665" endtime="20230612 00:17:44.666"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.667" level="INFO">Fills the text 'Abra' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.666" endtime="20230612 00:17:44.712"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.713" level="INFO">Fills the text 'Heap' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.713" endtime="20230612 00:17:44.730"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.730" endtime="20230612 00:17:44.759"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.760" level="INFO">Fills the text '5937' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.759" endtime="20230612 00:17:44.775"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.775" endtime="20230612 00:17:44.862"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:44.664" endtime="20230612 00:17:44.863"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:44.664" endtime="20230612 00:17:44.863"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Petronille', 'Last Name': 'Lesor', 'Sales': 54805, 'Sales Target': 85000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:44.866" level="INFO">${string} = 85000</msg>
+<status status="PASS" starttime="20230612 00:17:44.865" endtime="20230612 00:17:44.866"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.867" level="INFO">Fills the text 'Petronille' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.866" endtime="20230612 00:17:44.932"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:44.934" level="INFO">Fills the text 'Lesor' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:44.933" endtime="20230612 00:17:44.989"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:44.990" endtime="20230612 00:17:45.020"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:45.023" level="INFO">Fills the text '54805' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:45.022" endtime="20230612 00:17:45.039"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:45.039" endtime="20230612 00:17:45.150"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:44.864" endtime="20230612 00:17:45.150"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:44.863" endtime="20230612 00:17:45.151"/>
+</iter>
+<iter>
+<var name="${sales_rep}">{'First Name': 'Vincenty', 'Last Name': 'Stannering', 'Sales': 109884, 'Sales Target': 30000}</var>
+<kw name="Fill the form using the data from one person">
+<arg>${sales_rep}</arg>
+<kw name="Convert To String" library="BuiltIn">
+<var>${string}</var>
+<arg>${sales_rep}[Sales Target]</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230612 00:17:45.153" level="INFO">${string} = 30000</msg>
+<status status="PASS" starttime="20230612 00:17:45.152" endtime="20230612 00:17:45.153"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=firstname</arg>
+<arg>${sales_rep}[First Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:45.154" level="INFO">Fills the text 'Vincenty' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:45.153" endtime="20230612 00:17:45.198"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=lastname</arg>
+<arg>${sales_rep}[Last Name]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:45.200" level="INFO">Fills the text 'Stannering' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:45.199" endtime="20230612 00:17:45.215"/>
+</kw>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>id=salestarget</arg>
+<arg>value</arg>
+<arg>${string}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:45.216" endtime="20230612 00:17:45.245"/>
+</kw>
+<kw name="Fill Text" library="RPA.Browser.Playwright">
+<arg>id=salesresult</arg>
+<arg>${sales_rep}[Sales]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20230612 00:17:45.246" level="INFO">Fills the text '109884' in the given field.</msg>
+<status status="PASS" starttime="20230612 00:17:45.245" endtime="20230612 00:17:45.263"/>
+</kw>
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>text="Submit"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20230612 00:17:45.263" endtime="20230612 00:17:45.384"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:45.152" endtime="20230612 00:17:45.384"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:45.151" endtime="20230612 00:17:45.384"/>
+</iter>
+<status status="PASS" starttime="20230612 00:17:33.592" endtime="20230612 00:17:45.385"/>
+</for>
+<status status="PASS" starttime="20230612 00:17:33.562" endtime="20230612 00:17:45.385"/>
+</kw>
+<status status="PASS" starttime="20230612 00:17:28.395" endtime="20230612 00:17:45.386"/>
+</test>
+<doc>Playwright template.</doc>
+<status status="PASS" starttime="20230612 00:17:25.259" endtime="20230612 00:17:45.522"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230612 00:17:28.401" level="WARN">Open Browser is for quick experimentation and debugging only. Use New Page for production.</msg>
+</errors>
+</robot>
