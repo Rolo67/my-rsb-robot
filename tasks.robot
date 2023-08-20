@@ -13,6 +13,7 @@ Insert the sales data for the week and export it as a PDF
     Fill the form using the data from the Excel file
     Collect the results
     Export the table as a PDF
+    [Teardown]    Log out and close the browser
 
 *** Keywords ***
 Open the intranet website
@@ -51,3 +52,7 @@ Export the table as a PDF
     Wait For Elements State    id=sales-results    visible
     ${sales_results_html}=    Get Property     id=sales-results    outerHTML
     Html To Pdf    ${sales_results_html}    ${OUTPUT_DIR}${/}sales_results.pdf
+
+Log out and close the browser
+    Click     id=logout
+    Close Browser
